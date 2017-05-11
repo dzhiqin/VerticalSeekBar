@@ -108,6 +108,14 @@ public class VerticalSeekBar extends View {
         this.progress=progress;
         //invalidate();
     }
+    public void setGearedProgress(int myGear){
+        if(myGear<0)myGear=0;
+        if(myGear>gear)myGear=gear;
+        if(isGear){
+            int x=max/(gear-1);
+            setProgress(myGear*x);
+        }
+    }
     public void setMax(int max){
         if(max>0){
             this.max=max;

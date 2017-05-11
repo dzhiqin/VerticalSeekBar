@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         verticalSeekBar=(VerticalSeekBar)findViewById(R.id.my_seekBar);
         verticalSeekBar.setGears(5);
         verticalSeekBar.setProgressedColor(Color.BLUE);
+        verticalSeekBar.setGearedProgress(2);
         //verticalSeekBar.setBackgroundColor(Color.YELLOW);
         verticalSeekBar.setOnTouchListener(new VerticalSeekBar.OnTouchListener() {
             @Override
