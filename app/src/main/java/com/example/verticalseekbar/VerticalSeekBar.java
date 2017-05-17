@@ -159,6 +159,8 @@ public class VerticalSeekBar extends View {
             case MotionEvent.ACTION_UP:
                 int viewYUp=(int)event.getY();
                 progress=max-viewYUp*max/height;
+                if(progress<0)progress=0;//限制progress的界限
+                if(progress>max)progress=max;
                 imageId=thumbImage;
                 invalidate();
                 if(isGear){
