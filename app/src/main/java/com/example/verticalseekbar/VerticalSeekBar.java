@@ -154,7 +154,10 @@ public class VerticalSeekBar extends View {
                 if(progress>max)progress=max;
                 imageId=thumbImagePressed;
                 invalidate();
-                onTouchListener.onTouchMove(progress);
+                if(onTouchListener!=null){
+                    onTouchListener.onTouchMove(progress);
+                }
+
                 break;
             case MotionEvent.ACTION_UP:
                 int viewYUp=(int)event.getY();
@@ -169,9 +172,15 @@ public class VerticalSeekBar extends View {
                     int extra=progress%x;//progress对x取余，如果余数已经超出了最小刻度的一半，就让index++
                     if(extra>x/2)index++;
                     progress=index*x;
-                    onTouchListener.onTouchUp(index);//如果有刻度的，就返回刻度值，index从0开始
+                    if(onTouchListener!=null){
+                        onTouchListener.onTouchUp(index);//如果有刻度的，就返回刻度值，index从0开始
+                    }
+
                 }else{
-                    onTouchListener.onTouchUp(progress);//如果没有刻度，返回progress
+                    if(onTouchListener!=null){
+                        onTouchListener.onTouchUp(progress);//如果没有刻度，返回progress
+                    }
+
                 }
                 setProgress(progress);
                 break;
